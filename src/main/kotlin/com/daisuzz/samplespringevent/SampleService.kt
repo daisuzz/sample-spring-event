@@ -1,15 +1,20 @@
 package com.daisuzz.samplespringevent
 
-import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
 
 @Service
-class SampleService(val applicationEventPublisher: ApplicationEventPublisher) {
+class SampleService(
+    val syncApplicationEventPublisher: SyncApplicationEventPublisher,
+    val asyncApplicationEventPublisher: AsyncApplicationEventPublisher
+) {
 
-    fun getResource(): String {
+    fun getSyncResource(): String {
+        syncApplicationEventPublisher.fire(GetEvent())
+        return "Received!!"
+    }
 
-        applicationEventPublisher.publishEvent(GetEvent())
-
+    fun getAsyncResource(): String {
+        asyncApplicationEventPublisher.fire(GetEvent())
         return "Received!!"
     }
 }

@@ -8,9 +8,13 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping
 class SampleController(val sampleService: SampleService) {
 
-    @GetMapping
-    fun getResource(): String {
+    @GetMapping("sync")
+    fun getSyncResource(): String {
+        return sampleService.getSyncResource()
+    }
 
-        return sampleService.getResource()
+    @GetMapping("async")
+    fun getAsyncResource(): String {
+        return sampleService.getAsyncResource()
     }
 }

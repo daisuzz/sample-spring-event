@@ -1,0 +1,3 @@
+package com.daisuzz.samplespringevent
+
+interface SampleApplicationEvent
