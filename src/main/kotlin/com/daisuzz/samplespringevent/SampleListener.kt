@@ -8,6 +8,6 @@ class SampleListener {
 
     @EventListener
     fun handleOnGetResource(getEvent: GetEvent) {
-        println(getEvent.message)
+        println("${getEvent.message} : ${getEvent.createdAt}")
     }
 }
